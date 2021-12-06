@@ -13,8 +13,7 @@ for fish in in_:
 
 for i in range(256):
 
-    if i == 80:
-        print(sum(d.values()))
+    if i == 80: print(sum(d.values()))
 
     for j, fish in list(d.items()):
         if j == 0:

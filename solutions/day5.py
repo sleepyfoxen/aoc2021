@@ -18,8 +18,8 @@ d1 = defaultdict(lambda: defaultdict(int))
 d2 = defaultdict(lambda: defaultdict(int))
 
 def minmax(a, b):
-    if a < b: return (a, b)
-    return (b, a)
+    if a < b: return a, b
+    return b, a
 
 def count(d):
     c = 0
@@ -32,7 +32,7 @@ def count(d):
 for line in in_:
     p1, p2 = line.split(' -> ')
     (x1, y1), (x2, y2) = p1.split(','), p2.split(',')
-    x1, x2, y1, y2 = int(x1), int(x2), int(y1), int(y2)
+    x1, x2, y1, y2 = (int(z) for z in (x1, x2, y1, y2))
 
     if x1 == x2:
         y1, y2 = minmax(y1, y2)
@@ -47,11 +47,11 @@ for line in in_:
             d2[p][y1] += 1
 
     else:
-        m = (y2 - y1) / (x2 - x1)  # like in heckin school
-        p = x1, y1
+        m = (y2 - y1) / (x2 - x1)  # x2 - x1 guaranteed nonzero
+        x0, y0 = x1, y1
         x1, x2 = minmax(x1, x2)
         for px in range(x1, x2+1):
-            py = m * (px - p[0]) + p[1]
+            py = m * (px - x0) + y0
             d2[px][int(py)] += 1
 
 
