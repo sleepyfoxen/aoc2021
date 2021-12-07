@@ -9,12 +9,9 @@ med = np.median(in_)
 print(sum( abs(x - med) for x in in_ ))
 
 minimum = 1e10
-argmin = 0
 for i in range(min(in_), max(in_)):
     ks = ( abs(x - i) for x in in_ )
     Sk = sum( k * (k + 1) * 1/2 for k in ks )
-    if Sk < minimum:
-        argmin = i
-        minimum = Sk
+    if Sk < minimum: minimum = Sk
 
-print(argmin, minimum)
+print(minimum)
