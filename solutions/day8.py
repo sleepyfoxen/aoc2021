@@ -69,8 +69,6 @@ for line in in_:
             (ss, ss - seven, ss - four, ss - one, ss - seven - four))
         digits[d[magic]] = s
 
-    cs = [ set(c) for c in digits ]
-
     tmp = []
     for o in outs:
         for i, dd in enumerate(digits):
