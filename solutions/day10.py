@@ -15,22 +15,11 @@ with open('/home/fox/aoc2021/inputs/day10', 'r') as f:
 # <{([([[(<>()){}]>(<<{{
 # <{([{{}}[<[[[<>{}]]]>[]]'''.strip().split('\n')
 
-closes = {
-    '(': ')',
-    '[': ']',
-    '{': '}',
-    '<': '>'
-}
-
-pens = {
-    ')': 3,
-    ']': 57,
-    '}': 1197,
-    '>': 25137
-}
+closes = { '(': ')', '[': ']', '{': '}', '<': '>' }
+pens = { ')': 3, ']': 57, '}': 1197, '>': 25137 }
+sc_tab = { ')': 1, ']': 2, '}': 3, '>': 4 }
 
 pen = 0
-
 discards = []
 for i, line in enumerate(in_):
     stack = []
@@ -52,13 +41,6 @@ for i, line in enumerate(in_):
 
 print(pen)
 
-sc_tab = {
-    ')': 1,
-    ']': 2,
-    '}': 3,
-    '>': 4
-}
-
 
 scores = []
 for i, line in enumerate(in_):
@@ -68,12 +50,8 @@ for i, line in enumerate(in_):
     score = 0
 
     for c in line:
-        if c in '([{<':
-            stack.append(c)
-            continue
-
-        else:
-            stack.pop()
+        if c in '([{<': stack.append(c)
+        else:           stack.pop()
     
     remain = ( closes[c] for c in stack[::-1] )
     
