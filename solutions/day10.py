@@ -75,7 +75,7 @@ for i, line in enumerate(in_):
         else:
             stack.pop()
     
-    remain = ''.join(map(lambda a: closes[a], stack[::-1]))
+    remain = ( closes[c] for c in stack[::-1] )
     
     for c in remain:
         score *= 5
