@@ -33,12 +33,12 @@ b = { 2: [ 1 ],  # number of segments lit up -> possible digits
       6: [ 0, 6, 9 ],
       7: [ 8 ] }
 
-d = { (6, 4, 3, 5, 2): 6,  # magic tuples for 5- and 6- segment numbers
-      (5, 3, 3, 4, 2): 2,
-      (5, 3, 2, 4, 1): 5,  # tuples have the form (·, -7, -4, -1, -7-4)
-      (6, 3, 2, 4, 1): 9,  #   representing the number of segments left
-      (5, 2, 2, 3, 1): 3,  #   after removing ("subtracting") segments
-      (6, 3, 3, 4, 2): 0 } #   in 7, 4, 1, and 7-4. [7-4 = top segment]
+d = { (5, 3, 3, 4, 2): 2,   # magic tuples for 5- and 6-segment numbers
+      (5, 2, 2, 3, 1): 3,
+      (5, 3, 2, 4, 1): 5,   # tuples of the form (·, -7, -4, -1, -7-4)
+      (6, 3, 3, 4, 2): 0,   #  representing the number of segments left
+      (6, 4, 3, 5, 2): 6,   #  after removing ("subtracting") segments
+      (6, 3, 2, 4, 1): 9 }  #  in ·, 7, 4, 1, and 7-4. [· = nothing]
 
 result = 0
 for line in in_:
