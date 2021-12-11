@@ -19,7 +19,7 @@ for y, line in enumerate(in_):
             if y_ < 0 or x_ < 0:                    continue
             if y_ >= len(in_) or x_ >= len(in_[y]): continue
 
-            c_ = in_[y_][x_]  # safe: bound checked
+            c_ = in_[y_][x_]  # bounds checked
             if c >= c_: break
 
         # lower point not found
@@ -36,11 +36,11 @@ def g(y, x):
         for i, (dy, dx) in enumerate(cyclers):
             dy, dx = dy*scale, dx*scale
             y_, x_ = y + dy, x + dx
-            if nine[i] or (y_, x_) in gs:           continue
+            if nine[i] or (y_, x_) in gs:           continue  # bounds
             if y_ < 0 or x_ < 0:                    continue
             if y_ >= len(in_) or x_ >= len(in_[y]): continue
 
-            p = in_[y_][x_]
+            p = in_[y_][x_]   # safe
             if p == 9:  nine[i] = True
             else:       yield y_, x_
         

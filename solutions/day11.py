@@ -27,8 +27,8 @@ def flash(y, x):
 
     for dy, dx in directions:
         y_, x_ = y + dy, x + dx
-        if y_ < 0 or x_ < 0:                        continue  # bounds
-        if y_ >= len(in_) or x_ >= len(in_[y_]):    continue
+        if y_ < 0 or x_ < 0:        continue  # bounds check
+        if y_ >= 10 or x_ >= 10:    continue
 
         in_[y_][x_] += 1  # safe
 
